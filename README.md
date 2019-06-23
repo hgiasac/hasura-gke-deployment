@@ -60,7 +60,7 @@ Edit instance config `deployment-manager/gke.yaml`, then run
 
 ``` bash
 export GKE_NAME_NS=hasura-k8s
-export ZONE=asia-southeast1-a
+export ZONE=us-central1-a
 
 gcloud deployment-manager deployments create $GKE_NAME_NS --config=deployment-manager/postgres.yaml
 ```
