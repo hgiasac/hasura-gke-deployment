@@ -68,14 +68,14 @@ gcloud deployment-manager deployments create $GKE_NAME_NS --config=deployment-ma
 Then retrieve kubernetes cluster credentials for kubectl connection
 
 ```bash
-gcloud container clusters get-credentials $GKE_NS-hasura-gke --zone $ZONE
+gcloud container clusters get-credentials $GKE_NAME_NS-hasura-gke --zone $ZONE
 ```
 
 ## Kubernetes Setup
 
 ### Cloud SQL Proxy
 
-The Cloud SQL Proxy provides secure access to your Cloud SQL Second Generation instances without having to whitelist IP addresses or configure SSL. For kubernetes, we will deploy (gce-proxy)[gcr.io/cloudsql-docker/gce-proxy:1.14] container.
+The Cloud SQL Proxy provides secure access to your Cloud SQL Second Generation instances without having to whitelist IP addresses or configure SSL. For kubernetes, we will deploy (gce-proxy)[https://gcr.io/cloudsql-docker/gce-proxy:1.14] container.
 
 Before that we have to prepare service account credential, stored in k8s secret.
 
