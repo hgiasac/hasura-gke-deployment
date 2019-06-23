@@ -1,0 +1,27 @@
+imports:
+  - path: https://raw.githubusercontent.com/GoogleCloudPlatform/deploymentmanager-samples/master/community/cloud-foundation/templates/cloud_sql/cloud_sql.py
+    name: cloud_sql.py
+
+# reference instance settings at:
+# https://cloud.google.com/sql/docs/postgres/instance-settings
+resources:
+  - name: {{instanceName}}
+    type: cloud_sql.py
+    properties:
+      region: {{region}}
+      databaseVersion: POSTGRES_9_6
+
+      settings:
+        tier: {{dbTier}}
+        backupConfiguration:
+          startTime: '02:00'
+          enabled: false
+          binaryLogEnabled: false
+        locationPreference:
+          zone: {{zone}}
+        users:
+          - name: {{dbUser}}
+            password: {{dbPassword}}
+      
+      databases:
+        - name: {{dbName}}

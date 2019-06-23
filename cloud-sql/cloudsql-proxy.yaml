@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudsql-proxy
+  labels:
+    app: cloudsql-proxy
+spec:
+  template:
+    metadata:
+      labels:
+        app: cloudsql-proxy
+    spec:
+      containers:
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.14
+          command: ["/cloud_sql_proxy",
+          "-instances={{connectionName}}=tcp:0.0.0.0:5432",
+                    "-credential_file=/secrets/cloudsql/credentials.json"]
+          securityContext:
+            runAsUser: 2
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql-instance-credentials
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudsql-proxy-service
+spec:
+  ports:
+  - port: 5432
+    targetPort: 5432
+  selector:
+    app: cloudsql-proxy

@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hasura-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: {{ipName}}
+    networking.gke.io/managed-certificates: {{certName}}
+spec:
+  backend:
+    serviceName: hasura-svc
+    servicePort: 8080

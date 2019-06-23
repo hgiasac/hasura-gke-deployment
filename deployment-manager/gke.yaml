@@ -1,0 +1,10 @@
+imports:
+  - path: https://raw.githubusercontent.com/GoogleCloudPlatform/deploymentmanager-samples/master/examples/v2/gke/python/cluster.py
+    name: cluster.py
+
+resources:
+  - name: hasura-gke
+    type: cluster.py
+    properties:
+      zone: {{zone}}
+      initialNodeCount: 3
