@@ -6,9 +6,9 @@ A feature-complete Hasura stack on GKE Kubernetes, for general k8s stack, [read 
 
 - Google Cloud Services
 - Cloud SQL Postgres Instance
+- Google Kubernetes Engine
 - Hasura GraphQL Engine
-- GKE Nginx Ingress
-- Cert Manager for auto SSL with Let's Encrypt
+- Domain Name with DNS manager
 - Google Cloud Deployment Manager (optional)
 
 ## Infrastructure 
@@ -89,12 +89,12 @@ export CLOUDSQL_SA_SECRET=cloudsql-instance-credentials
 kubectl create secret generic $CLOUDSQL_SA_SECRET --from-file="credentials.json=/path/to/file.json"
 ```
 
-- Edit instance connection name `{{connectionName}}` and secret mount point if you define another name on `cloud-sql/cloudsql-proxy.yaml`, then run deploy
+Edit instance connection name `{{connectionName}}` and secret mount point if you define another name on `cloud-sql/cloudsql-proxy.yaml`, then run deploy
 
 ```bash
 kubectl apply -f cloud-sql/cloudsql-proxy.yaml
 ```
-- Also create Postgres login credential secret for GraphQL Engine deployment `cloud-sql/cloudsql-db-credentials.yaml`
+Also create Postgres login credential secret for GraphQL Engine deployment `cloud-sql/cloudsql-db-credentials.yaml`
 
 ```bash
 # edit template file first
