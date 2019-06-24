@@ -14,7 +14,7 @@ spec:
         - name: cloudsql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:1.14
           command: ["/cloud_sql_proxy",
-          "-instances={{connectionName}}=tcp:0.0.0.0:5432",
+          "-instances=astral-sorter-244508:asia-southeast1:hasura-gke-demo=tcp:0.0.0.0:5432",
                     "-credential_file=/secrets/cloudsql/credentials.json"]
           securityContext:
             runAsUser: 2

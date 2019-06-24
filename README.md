@@ -2,6 +2,8 @@
 
 A feature-complete Hasura stack on GKE Kubernetes, for general k8s stack, [read here](https://github.com/hasura/hasura-k8s-stack)
 
+[![Hasura GraphQL Engine Deployment using Google Kubernetes Engine Stack](http://img.youtube.com/vi/5hpCtlsTgtA/0.jpg)](http://www.youtube.com/watch?v=5hpCtlsTgtA "Hasura GraphQL Engine Deployment using Google Kubernetes Engine Stack")
+
 ## Components
 
 - Google Cloud Services
